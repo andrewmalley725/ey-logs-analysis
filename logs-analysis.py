@@ -62,7 +62,7 @@ def ip_address_occurrence(dit):
                     addresses[address]['ATTEMPTS'] += 1
                     addresses[address]['TIMES'].append(str(i['Date and Time']))
 
-    return addresses
+    return pd.DataFrame(addresses)
             
 def breaches(dit):
     after_hours = []
@@ -85,9 +85,7 @@ if __name__ == '__main__':
     def num_breaches():
         print(len(breaches(df)[0]))
 
-    def json_ip():
-        json_object = json.dumps(ip_address_occurrence(df), indent = 4)
-        print(json_object)
+    
 
     def duplicate_times():
         for i in range(len(df)):
@@ -144,6 +142,6 @@ if __name__ == '__main__':
                 print(i)
                 print()
 
-    get_times()
+    print(ip_address_occurrence(df))
 
             
